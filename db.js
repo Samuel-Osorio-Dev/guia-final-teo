@@ -1,55 +1,46 @@
-// Importa sqlite3
 const sqlite3 = require('sqlite3').verbose();
-
-// Crea la base de datos (archivo database.db)
 const db = new sqlite3.Database('./database.db');
 
-// Ejecuta las consultas en orden
 db.serialize(() => {
+  db.run('PRAGMA foreign_keys = ON');
 
-  // Tabla usuarios
   db.run(`CREATE TABLE IF NOT EXISTS usuarios (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, -- clave primaria
-    nombre TEXT NOT NULL,                 -- campo obligatorio
-    email TEXT UNIQUE NOT NULL            -- no se puede repetir
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
   )`);
 
-  // Tabla juegos
   db.run(`CREATE TABLE IF NOT EXISTS juegos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     genero TEXT NOT NULL,
-    precio REAL CHECK(precio > 0) -- no permite valores negativos
+    precio REAL NOT NULL CHECK(precio > 0)
   )`);
 
-  // Tabla compras (relación con usuarios)
   db.run(`CREATE TABLE IF NOT EXISTS compras (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER NOT NULL,
     fecha TEXT NOT NULL,
-    FOREIGN KEY(usuario_id) REFERENCES usuarios(id) -- clave foránea
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
   )`);
 
-  // Tabla detalle (relación con compras y juegos)
   db.run(`CREATE TABLE IF NOT EXISTS detalle_compras (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     compra_id INTEGER NOT NULL,
     juego_id INTEGER NOT NULL,
-    FOREIGN KEY(compra_id) REFERENCES compras(id),
-    FOREIGN KEY(juego_id) REFERENCES juegos(id)
+    FOREIGN KEY(compra_id) REFERENCES compras(id) ON DELETE CASCADE,
+    FOREIGN KEY(juego_id) REFERENCES juegos(id) ON DELETE CASCADE
   )`);
 
-  // Tabla reseñas (relación con usuarios y juegos)
-  db.run(`CREATE TABLE IF NOT EXISTS reseñas (
+  db.run(`CREATE TABLE IF NOT EXISTS resenias (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER NOT NULL,
     juego_id INTEGER NOT NULL,
     comentario TEXT,
-    calificacion INTEGER CHECK(calificacion >= 1 AND calificacion <= 5),
-    FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY(juego_id) REFERENCES juegos(id)
+    calificacion INTEGER NOT NULL CHECK(calificacion >= 1 AND calificacion <= 5),
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY(juego_id) REFERENCES juegos(id) ON DELETE CASCADE
   )`);
-
 });
 
 module.exports = db;

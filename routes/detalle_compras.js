@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// POST detalle
+router.get('/', (req, res) => {
+  db.all('SELECT * FROM detalle_compras', [], (err, rows) => {
+    res.json(rows);
+  });
+});
+
 router.post('/', (req, res) => {
   const { compra_id, juego_id } = req.body;
 
@@ -17,6 +22,13 @@ router.post('/', (req, res) => {
       res.status(201).json({ id: this.lastID });
     }
   );
+});
+
+router.delete('/:id', (req, res) => {
+  db.run('DELETE FROM detalle_compras WHERE id=?', [req.params.id], function () {
+    if (this.changes === 0) return res.status(404).json({ message: 'No encontrado' });
+    res.json({ message: 'Eliminado' });
+  });
 });
 
 module.exports = router;
