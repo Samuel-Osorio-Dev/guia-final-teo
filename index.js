@@ -4,6 +4,7 @@ const app = express();
 
 app.use(express.json());
 
+// Middleware auth
 app.use((req, res, next) => {
   const apiKey = req.headers['password'];
 
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Rutas
 app.use('/usuarios', require('./routes/usuarios'));
 app.use('/juegos', require('./routes/juegos'));
 app.use('/compras', require('./routes/compras'));
