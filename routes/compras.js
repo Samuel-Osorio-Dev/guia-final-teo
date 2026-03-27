@@ -67,7 +67,16 @@ router.put('/:id', (req, res) => {
 
 // DELETE
 router.delete('/:id', (req, res) => {
-  db.run('DELETE FROM compras WHERE id=?', [req.params.id], function () {
+  db.run('DELETE FROM compras WHERE id=?', [req.params.id], function (err) {
+    if (err) {
+      if (err.message.includes('FOREIGN KEY constraint failed')) {
+        return res.status(400).json({
+          success: false,
+          message: 'No se puede eliminar la compra porque tiene detalles asociados.'
+        });
+      }
+      return res.status(500).json({ success: false, message: 'Error BD' });
+    }
     if (this.changes === 0) return res.status(404).json({ success: false, message: 'No encontrado' });
     res.json({ success: true, message: 'Eliminado' });
   });
