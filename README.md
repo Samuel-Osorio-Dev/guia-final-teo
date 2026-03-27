@@ -20,6 +20,8 @@ password: 1234
 
 ## 🗄️ Modelo de datos (Diagrama ER)
 
+![Diagrama ER](assets/diagrama-er-teo.png)
+
 ### 🧩 Tablas del sistema
 - **usuarios** — id, nombre, email (UNIQUE)
 - **juegos** — id, nombre, genero, precio (CHECK > 0)
