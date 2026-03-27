@@ -19,11 +19,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/usuarios', require('./routes/usuarios'));
-app.use('/juegos', require('./routes/juegos'));
-app.use('/compras', require('./routes/compras'));
-app.use('/detalle', require('./routes/detalle_compras'));
-app.use('/resenias', require('./routes/resenias'));
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/juegos', require('./routes/juegos'));
+app.use('/api/compras', require('./routes/compras'));
+app.use('/api/detalle', require('./routes/detalle_compras'));
+app.use('/api/resenias', require('./routes/resenias'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
