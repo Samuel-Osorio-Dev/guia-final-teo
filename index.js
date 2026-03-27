@@ -4,22 +4,21 @@ const app = express();
 
 app.use(express.json());
 
-// Middleware auth
+// AUTH
 app.use((req, res, next) => {
   const apiKey = req.headers['password'];
 
   if (!apiKey) {
-    return res.status(401).json({ success: false, message: 'Falta password' });
+    return res.status(401).json({ success:false, message:'Falta password' });
   }
 
   if (apiKey !== process.env.API_PASSWORD) {
-    return res.status(403).json({ success: false, message: 'Password incorrecta' });
+    return res.status(403).json({ success:false, message:'Password incorrecta' });
   }
 
   next();
 });
 
-// Rutas
 app.use('/usuarios', require('./routes/usuarios'));
 app.use('/juegos', require('./routes/juegos'));
 app.use('/compras', require('./routes/compras'));
