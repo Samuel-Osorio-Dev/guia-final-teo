@@ -41,22 +41,6 @@ db.serialize(() => {
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY(juego_id) REFERENCES juegos(id)
   )`);
- 
-  // DATOS DE PRUEBA
-  db.run(`INSERT OR IGNORE INTO usuarios(id,nombre,email) VALUES (1,'Samuel Osorio','samuel@email.com')`);
-  db.run(`INSERT OR IGNORE INTO usuarios(id,nombre,email) VALUES (2,'Maria Lopez','maria@email.com')`);
- 
-  db.run(`INSERT OR IGNORE INTO juegos(id,nombre,genero,precio) VALUES (1,'GTA V','Accion',115)`);
-  db.run(`INSERT OR IGNORE INTO juegos(id,nombre,genero,precio) VALUES (2,'FIFA 24','Deportes',100)`);
- 
-  db.run(`INSERT OR IGNORE INTO compras(id,usuario_id,fecha) VALUES (1,1,'2024-03-20')`);
-  db.run(`INSERT OR IGNORE INTO compras(id,usuario_id,fecha) VALUES (2,2,'2024-03-21')`);
- 
-  db.run(`INSERT OR IGNORE INTO detalle_compras(id,compra_id,juego_id) VALUES (1,1,1)`);
-  db.run(`INSERT OR IGNORE INTO detalle_compras(id,compra_id,juego_id) VALUES (2,2,2)`);
- 
-  db.run(`INSERT OR IGNORE INTO resenias(id,usuario_id,juego_id,comentario,calificacion) VALUES (1,1,1,'Juegazo, lo recomiendo',5)`);
-  db.run(`INSERT OR IGNORE INTO resenias(id,usuario_id,juego_id,comentario,calificacion) VALUES (2,2,2,'Muy buena historia',4)`);
 });
  
 module.exports = db;
