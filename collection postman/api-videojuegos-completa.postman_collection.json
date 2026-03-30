@@ -1,0 +1,307 @@
+{
+  "info": {
+    "name": "api-videojuegos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "https://api-videojuegos-pk7v.onrender.com" },
+    { "key": "password", "value": "1234" }
+  ],
+  "item": [
+    {
+      "name": "usuarios",
+      "item": [
+        {
+          "name": "GET todos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/usuarios"
+          }
+        },
+        {
+          "name": "GET por id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/usuarios/1"
+          }
+        },
+        {
+          "name": "POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"email\": \"juan@mail.com\"\n}"
+            },
+            "url": "{{base_url}}/api/usuarios"
+          }
+        },
+        {
+          "name": "PUT por id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Actualizado\",\n  \"email\": \"juan_nuevo@mail.com\"\n}"
+            },
+            "url": "{{base_url}}/api/usuarios/1"
+          }
+        },
+        {
+          "name": "DELETE por id",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/usuarios/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "juegos",
+      "item": [
+        {
+          "name": "GET todos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/juegos"
+          }
+        },
+        {
+          "name": "GET por id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/juegos/1"
+          }
+        },
+        {
+          "name": "POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"FIFA 25\",\n  \"genero\": \"Deportes\",\n  \"precio\": 60\n}"
+            },
+            "url": "{{base_url}}/api/juegos"
+          }
+        },
+        {
+          "name": "PUT por id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"FIFA 25 Updated\",\n  \"genero\": \"Deportes\",\n  \"precio\": 50\n}"
+            },
+            "url": "{{base_url}}/api/juegos/1"
+          }
+        },
+        {
+          "name": "DELETE por id",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/juegos/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "compras",
+      "item": [
+        {
+          "name": "GET todos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/compras"
+          }
+        },
+        {
+          "name": "GET por id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/compras/1"
+          }
+        },
+        {
+          "name": "POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"fecha\": \"2024-03-27\"\n}"
+            },
+            "url": "{{base_url}}/api/compras"
+          }
+        },
+        {
+          "name": "PUT por id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"fecha\": \"2024-04-01\"\n}"
+            },
+            "url": "{{base_url}}/api/compras/1"
+          }
+        },
+        {
+          "name": "DELETE por id",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/compras/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "detalle_compras",
+      "item": [
+        {
+          "name": "GET todos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/detalle"
+          }
+        },
+        {
+          "name": "GET por id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/detalle/1"
+          }
+        },
+        {
+          "name": "POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compra_id\": 1,\n  \"juego_id\": 1\n}"
+            },
+            "url": "{{base_url}}/api/detalle"
+          }
+        },
+        {
+          "name": "PUT por id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compra_id\": 1,\n  \"juego_id\": 2\n}"
+            },
+            "url": "{{base_url}}/api/detalle/1"
+          }
+        },
+        {
+          "name": "DELETE por id",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/detalle/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "resenias",
+      "item": [
+        {
+          "name": "GET todos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/resenias"
+          }
+        },
+        {
+          "name": "GET por id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/resenias/1"
+          }
+        },
+        {
+          "name": "POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"juego_id\": 1,\n  \"comentario\": \"Muy buen juego\",\n  \"calificacion\": 5\n}"
+            },
+            "url": "{{base_url}}/api/resenias"
+          }
+        },
+        {
+          "name": "PUT por id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "password", "value": "{{password}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"juego_id\": 1,\n  \"comentario\": \"Comentario actualizado\",\n  \"calificacion\": 4\n}"
+            },
+            "url": "{{base_url}}/api/resenias/1"
+          }
+        },
+        {
+          "name": "DELETE por id",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "password", "value": "{{password}}" }],
+            "url": "{{base_url}}/api/resenias/1"
+          }
+        }
+      ]
+    }
+  ]
+}
